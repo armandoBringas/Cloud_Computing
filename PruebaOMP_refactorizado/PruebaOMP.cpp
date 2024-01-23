@@ -7,12 +7,10 @@
 #define USE_RANDOM_VALUES // Comentar para usar valores predefinidos
 
 #ifdef USE_RANDOM_VALUES
-// Generate random values for N, CHUNK_SIZE, and MOSTRAR
 const int N = numeroAleatorio(100, 1000);
 const int CHUNK_SIZE = numeroAleatorio(10, 100);
 const int MOSTRAR = numeroAleatorio(5, 20);
 #else
-// Use predefined values
 const int N = 1000;
 const int CHUNK_SIZE = 100;
 const int MOSTRAR = 10;
