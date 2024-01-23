@@ -58,12 +58,12 @@ void imprimeArreglo(const std::vector<float>& d)
     std::cout << std::endl;
 }
 
-void sumaArreglosParalelo(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c, int size, int chunk)
+void sumaArreglosParalelo(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c, int n, int chunk)
 {
 #pragma omp parallel for \
-    shared(a, b, c, size) \
+    shared(a, b, c, chunk) \
     schedule(static, chunk)
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < n; i++)
         c[i] = a[i] + b[i];
 }
 
