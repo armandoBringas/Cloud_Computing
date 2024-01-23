@@ -1,17 +1,33 @@
 #include <iostream>
 #include <omp.h>
+#include <stdio.h>
+#include <vector>
 #include "PruebaOMP.h"
 
-#define N 1000
-#define CHUNK_SIZE 100
-#define MOSTRAR 10
+#define USE_RANDOM_VALUES // Comentar para usar valores predefinidos
 
+#ifdef USE_RANDOM_VALUES
+// Generate random values for N, CHUNK_SIZE, and MOSTRAR
+const int N = numeroAleatorio(100, 1000);
+const int CHUNK_SIZE = numeroAleatorio(10, 100);
+const int MOSTRAR = numeroAleatorio(5, 20);
+#else
+// Use predefined values
+const int N = 1000;
+const int CHUNK_SIZE = 100;
+const int MOSTRAR = 10;
+#endif
 
 int main()
 {
     std::cout << "Sumando Arreglos en Paralelo!\n";
+    std::cout << std::endl;
+    std::cout << "N = " << N << std::endl;
+    std::cout << "CHUNK_SIZE = " << CHUNK_SIZE << std::endl;
+    std::cout << "MOSTRAR = " << MOSTRAR << std::endl;
+    std::cout << std::endl;
 
-    float a[N], b[N], c[N];
+    std::vector<float> a(N), b(N), c(N);
 
     for (int i = 0; i < N; i++)
     {
@@ -33,20 +49,36 @@ int main()
     return 0;
 }
 
-void imprimeArreglo(float* d)
+void imprimeArreglo(const std::vector<float>& d)
 {
-    for (int x = 0; x < MOSTRAR; x++)
+    for (int x = 0; x < MOSTRAR && x < d.size(); x++)
         std::cout << d[x] << " - ";
+
+    std::cout << std::endl;
     std::cout << std::endl;
 }
 
-void sumaArreglosParalelo(float* a, float* b, float* c, int size, int chunk)
+void sumaArreglosParalelo(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c, int size, int chunk)
 {
-    int i = 0;
-
-    #pragma omp parallel for \
-    shared(a, b, c, size) private(i) \
+#pragma omp parallel for \
+    shared(a, b, c, size) \
     schedule(static, chunk)
     for (int i = 0; i < size; i++)
         c[i] = a[i] + b[i];
+}
+
+int numeroAleatorio(int min_num, int max_num)
+{
+    // Ensure a valid range
+    if (min_num >= max_num) {
+        std::swap(min_num, max_num);
+    }
+
+    static bool seed_initialized = false;
+    if (!seed_initialized) {
+        srand(static_cast<unsigned>(time(nullptr)));
+        seed_initialized = true;
+    }
+
+    return rand() % (max_num - min_num + 1) + min_num;
 }
