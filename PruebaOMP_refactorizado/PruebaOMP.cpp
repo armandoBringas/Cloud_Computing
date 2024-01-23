@@ -7,12 +7,10 @@
 #define USE_RANDOM_VALUES // Comentar para usar valores predefinidos
 
 #ifdef USE_RANDOM_VALUES
-// Generate random values for N, CHUNK_SIZE, and MOSTRAR
 const int N = numeroAleatorio(100, 1000);
 const int CHUNK_SIZE = numeroAleatorio(10, 100);
 const int MOSTRAR = numeroAleatorio(5, 20);
 #else
-// Use predefined values
 const int N = 1000;
 const int CHUNK_SIZE = 100;
 const int MOSTRAR = 10;
@@ -58,12 +56,12 @@ void imprimeArreglo(const std::vector<float>& d)
     std::cout << std::endl;
 }
 
-void sumaArreglosParalelo(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c, int size, int chunk)
+void sumaArreglosParalelo(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c, int n, int chunk)
 {
 #pragma omp parallel for \
-    shared(a, b, c, size) \
+    shared(a, b, c, chunk) \
     schedule(static, chunk)
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < n; i++)
         c[i] = a[i] + b[i];
 }
 
