@@ -6,8 +6,6 @@
 #define CHUNK_SIZE 100
 #define MOSTRAR 10
 
-void imprimeArreglo(float* d);
-void sumaArreglosParalelo(float* a, float* b, float* c, int size, int chunk);
 
 int main()
 {
