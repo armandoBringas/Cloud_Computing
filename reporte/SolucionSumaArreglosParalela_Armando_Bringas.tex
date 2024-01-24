@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage{amsmath, amssymb, epstopdf, graphicx, titletoc, fancyhdr}
+\usepackage[a4paper,pdftex]{geometry}
+\usepackage[english]{babel}
+\usepackage{xcolor}
+\usepackage{enumerate, fix-cm, tocbibind, listings, float, enumitem, subcaption}
+
+% Define colors
+\definecolor{vgreen}{RGB}{104,180,104}
+\definecolor{vblue}{RGB}{49,49,255}
+\definecolor{vorange}{RGB}{255,143,102}
+
+% Listings customization
+\renewcommand\lstlistingname{Appendix}
+\renewcommand\lstlistlistingname{Appendix}
+
+\makeatletter
+\newcommand*\@lbracket{[}
+\newcommand*\@rbracket{]}
+\newcommand*\@colon{:}
+\newcommand*\colorIndex{%
+    \edef\@temp{\the\lst@token}%
+    \ifx\@temp\@lbracket \color{black}%
+    \else\ifx\@temp\@rbracket \color{black}%
+    \else\ifx\@temp\@colon \color{black}%
+    \else \color{vorange}%
+    \fi\fi\fi
+}
+\makeatother
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[scale=1]{reporte/figuras/Logo_Tec.png}\\
+            \vspace{.5cm}
+            \bf{\large Escuela de Ingeniería y Ciencias}
+        \end{center}
+        
+        \vspace{5cm}
+        \centering
+        \textbf{\Huge Cómputo en la Nube}
+        \vspace{0.5cm}
+        
+        {\Large Programación de una Solución Paralela}
+
+        \vspace{5cm}
+        
+        \textbf{\LARGE Armando Bringas Corpus}
+        
+        \vspace{0.5cm}
+        
+        {\large A01200230}
+        
+        \vfill
+        
+    \end{titlepage}
+
+    \section{Introducción}
+
+    \section{Liga al repositorio}
+    
+
+    \section{Capturas de pantalla}
+
+    \section{Explicación del código y resultados}
+
+    \section{Reflexión sobre la programación paralela}
+    
+\end{document}
