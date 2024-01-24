@@ -2,8 +2,8 @@
 #include <omp.h>
 
 #define N 1000
-#define chunk 100
-#define mostrar 10
+#define chunk 500
+#define mostrar 50
 
 void imprimeArreglo(float* d);
 
@@ -16,13 +16,13 @@ int main()
 
     for (int i = 0; i < N; i++)
     {
-        a[i] = i * 10;
-        b[i] = (i + 3) * 3.7;
+        a[i] = (i + 25) * 48.6; // i * 10;
+        b[i] = (i + 77) * 150.7; // (i + 3) * 3.7;
     }
 
     int pedazos = chunk;
 
-    #pragma omp parallel for \
+#pragma omp parallel for \
     shared(a, b, c, pedazos) private(i) \
     schedule(static, pedazos)
     for (int i = 0; i < N; i++)

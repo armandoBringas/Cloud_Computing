@@ -4,16 +4,16 @@
 #include <vector>
 #include "PruebaOMP.h"
 
-#define USE_RANDOM_VALUES // Comentar para usar valores predefinidos
+// #define USE_RANDOM_VALUES // Comentar para usar valores predefinidos
 
 #ifdef USE_RANDOM_VALUES
-const int N = numeroAleatorio(100, 1000);
-const int CHUNK_SIZE = numeroAleatorio(10, 100);
-const int MOSTRAR = numeroAleatorio(5, 20);
+const int N = numeroAleatorio(50000, 60000);
+const int CHUNK_SIZE = numeroAleatorio(700, 1000);
+const int MOSTRAR = numeroAleatorio(20, 40);
 #else
-const int N = 1000;
-const int CHUNK_SIZE = 100;
-const int MOSTRAR = 10;
+const int N = 10000;
+const int CHUNK_SIZE = 500;
+const int MOSTRAR = 50;
 #endif
 
 int main()
@@ -29,8 +29,8 @@ int main()
 
     for (int i = 0; i < N; i++)
     {
-        a[i] = i * 10;
-        b[i] = (i + 3) * 3.7;
+        a[i] = (i + 25) * 48.6; // (i + 2) * 10;
+        b[i] = (i + 77) * 150.7; // (i + 3) * 3.7;
     }
 
     sumaArreglosParalelo(a, b, c, N, CHUNK_SIZE);
