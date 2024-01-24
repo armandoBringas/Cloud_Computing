@@ -90,6 +90,7 @@
 
 \section{Introducción}
 
+La siguiente práctica tiene como objetivo el implementar un algoritmo paralelo para resolver un problema numérico. De forma particular para la suma de dos arreglos donde se aplicará programación paralela donde la suma de algunos de los elementos de los arreglos se puedan realizar en un hilo, otra porción en otro hilo y así sucesivamente empleando la librería OMP, realizando el código en lenguaje de programación C++ y ejecutándolo a través del entorno de desarrollo Visual Studio.
 
 \section{Liga al repositorio}
 
@@ -101,6 +102,16 @@
 
 
 \section{Capturas de pantalla}
+
+Se realizó la práctica con el entorno de desarrollo integrado (IDE) Microsoft Visual Studio Enterprise 2022 (64-bit) en el cual se configuró un proyecto en el cual se activo la compatibilidad con la librería Open MP para permitir gestionar e interpretar directivas e instrucciones de hilos y paralelismo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{M2_Modelos_de_Programación/reporte/figuras/Configuración_proyecto.png}
+    \captionof{lstlisting}{Configuración de librería OpenMP en Visual Studio}
+    \label{fig:Visual-Studio}
+\end{figure}
+
 Con el código original de la actividad utilizando los siguientes parámetros se obtuvieron los siguientes resultados:
 
 \vspace{1em}
@@ -436,9 +447,19 @@ Para el código refactorizado obtenemos los siguientes resultados:
     \label{fig:Código_refactorizado_resultados}
 \end{figure}
 
-Como podemos observar en ambos códigos el resultado es el mismo, con lo cual se puede corroborar que las implementaciones son adecuadas y no hay discrepancias con el código refatorizado.
+Como podemos observar en ambos códigos el resultado es el mismo, con lo cual se puede corroborar que las implementaciones son adecuadas y no hay discrepancias con el código refactorizado.
 
 
 \section{Reflexión sobre la programación paralela}
+
+Se realizó una práctica donde se implementó un ejemplo de programación en paralelo, en este caso anivel de instrucción en el cual se fue ejecutando instrucciones independientes en forma simultánea. Se utilizó la librería OpenMP utilizando el lenguaje de programación C++ y el entorno de desarrollo Visual Studio que facilitaraon en la creación, compilación y ejecución del código.
+
+\vspace{1em}
+
+Aunque a primera instancia el ejemplo pueda parecer trivial, es de suma importancia ya que si se tuviera el caso como el de la suma de dos arreglos que contuvieran miles de elementos se puede mejorar el tiempo de ejecución a través de la paralelización, se podría pensar en otros casos como en el contexto de Inteligencia Artificial donde se emplean algoritmos de Aprendizaje Automático en la cuál se realizan operaciones matemáticas con datos de miles o millones de elementos que no serían posibles de ejecutarlas si no fuera a través de la paralelización.
+
+\vspace{1em}
+
+Es por ello que el uso de la programación paralela es importante en donde se procesan una gran cantidad de datos y donde se tienen que hacer un sinnúmero de cálculos en los mismos los cuales son posibles a través de técnicas de paralelización, también la paralelización puede ofrecer la oportunidad de optimizar recursos de hardware e incluso ahorrar costos al buscar formas más eficientes de ejecutar el código.
 
 \end{document}
